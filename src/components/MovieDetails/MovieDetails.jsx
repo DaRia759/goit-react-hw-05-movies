@@ -1,4 +1,5 @@
-import { useEffect, useParams } from "react";
+import { useParams } from "react";
+import { Link, Outlet } from "react-router-dom";
 
 const MovieDetails = () => {
     const { movieId } = useParams();
@@ -7,9 +8,19 @@ const MovieDetails = () => {
 
     // }, [])
 
-    return <>
-        Movie Details: {movieId}
-    </>;
+    return (
+        <>
+            <h1>Movie Details: {movieId}</h1>
+            <ul>
+                <li>
+                    <Link to={`/movies/${movieId}/cast`}>Cast</Link>
+                </li>
+                <li>
+                    <Link to={`/movies/${movieId}/reviews`}>Reviews</Link></li>
+            </ul>
+            <Outlet />
+        </>
+    );
 };
 
 export default MovieDetails;
