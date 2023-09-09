@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { Header, Link } from './App.styled';
+import { Header, Link } from '../App.styled';
+import { Suspense } from "react";
 
 
 const Layout = () => {
@@ -14,10 +15,11 @@ const Layout = () => {
                         <NavLink to='/movies'>Movies</NavLink>
                     </Link>
                 </nav>
-                <main>
-                    <Outlet />
-                </main>
             </Header>
+            <Suspense fallback={<div>Loading page...</div>}>
+                <Outlet />
+            </Suspense>
+            
         </div>
     )
 };
